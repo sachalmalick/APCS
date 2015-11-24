@@ -6,7 +6,7 @@ public class Concentration {
     //instance variables
     private Tile[][] _board;     //storage for 4x4 grid of Tiles.
     private int _numberFaceUp;   //count of Tiles with faces visible
-    private String[] _words;     //list of unique Strings used for Tile vals
+    private String[] _words = {"apple","bob","casey","dog","elephant","frog","hello","igloo"};;     //list of unique Strings used for Tile vals
     private static int _numRows = 4;
 
 
@@ -14,7 +14,6 @@ public class Concentration {
     public Concentration () {
 	_board = new int [4][4];
 	_numberFaceUp = 0;
-	_words = {"apple","bob","casey","dog","elephant","frog","hello","igloo"};
     }
 
     private void swap( int i, int j ) {
