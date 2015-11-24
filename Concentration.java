@@ -1,4 +1,6 @@
-import cs1.Keyboard;  //if comfortable with Scanner, you may comment this out
+import java.util.Scanner;
+
+//import cs1.Keyboard;  //if comfortable with Scanner, you may comment this out
 
 		
 public class Concentration {
@@ -8,7 +10,7 @@ public class Concentration {
     //instance variables
     private Tile[][] _board;     //storage for 4x4 grid of Tiles.
     private int _numberFaceUp;   //count of Tiles with faces visible
-    private String[] _words = {"apple","bob","casey","dog","elephant","frog","hello","igloo"};;     //list of unique Strings used for Tile vals
+    private String[] _words = {"apple","bob","casey","dog","elephant","frog","hello","igloo","jaco","chondsalb","yocanna","dcsoo","choov","oopuy","hof","uiop"};;     //list of unique Strings used for Tile vals
     private static int _numRows = 4;
 
 
@@ -17,6 +19,17 @@ public class Concentration {
 	_board = new Tile [4][4];
 	_numberFaceUp = 0;
     }
+    
+    public void print2() {
+    	Tile [] [] a = this._board;
+    	for (Tile [] s: a) {
+    	    for (Tile x: s) {
+    		System.out.print(x);
+    	    }
+    		
+    	    System.out.println();
+    	} 
+        }
 
     private void swap( int i, int j ) {
 	String extra = _words[i];
@@ -45,8 +58,71 @@ public class Concentration {
 	}
     }
     
-    public void play() {
+    public String play() {
+    	populate();
+    	while (_numberFaceUp < 16) {
+    		
     	
+    	this.print2();
+    	Scanner s = new Scanner(System.in);
+    	String firstcol = "";
+    	String firstrow = "";
+    	String seccol = "";
+    	String secrow = "";
+
+    	
+    	System.out.println("Please enter the row of the first string");
+
+    	if (s.hasNext() ) {
+    	firstrow = s.nextLine();
+
+    	}
+
+    	System.out.println("Please enter the column of the first string");
+
+    	if (s.hasNext() ) {
+
+    	firstcol = s.nextLine();
+
+    	}
+    	System.out.println("Please enter the row of the second string");
+
+    	if (s.hasNext() ) {
+
+    	secrow = s.nextLine();
+
+    	}
+    	System.out.println("Please enter the column of the second string");
+
+    	if (s.hasNext() ) {
+
+    	seccol = s.nextLine();
+
+    	}
+
+
+    	int firsrow = Integer.parseInt(firstrow);
+    	int secundorow = Integer.parseInt(secrow);
+    	int firstcolo = Integer.parseInt(firstcol);
+    	int secundocolo = Integer.parseInt(seccol);
+    	Tile t = this._board[firsrow][firstcolo];
+    	Tile j = this._board[secundocolo][secundorow];
+    	
+    	t.set_isFaceUp(true);
+    	j.set_isFaceUp(true);
+
+    	this.print2();
+    	if (!t.equals(j)) {
+    		t.set_isFaceUp(false);
+        	j.set_isFaceUp(false);
+    	}
+    	else {
+    		_numberFaceUp+=2;
+    	}
+    	this.print2();
+    	}
+    	
+    	return "game over";
     }
 		
 		//DO NOT MODIFY main()
