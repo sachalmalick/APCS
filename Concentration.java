@@ -2,6 +2,8 @@ import cs1.Keyboard;  //if comfortable with Scanner, you may comment this out
 
 		
 public class Concentration {
+	
+		
 
     //instance variables
     private Tile[][] _board;     //storage for 4x4 grid of Tiles.
@@ -12,7 +14,7 @@ public class Concentration {
 
     //insert constructor and methods here
     public Concentration () {
-	_board = new int [4][4];
+	_board = new Tile [4][4];
 	_numberFaceUp = 0;
     }
 
@@ -27,27 +29,31 @@ public class Concentration {
 	    swap(i, (int)(Math.random()*(_words.length)));
 	}
     }
-	
+		
     public void populate(){
 	randomize();
 	for(int j=0; j< 2; j++){ //does the first two rows
-	    for(int k=0; k < a[j].length; k++){ //does the rows
-		a[j][k] = _words[j * k + 4];
+	    for(int k=0; k < this._board[j].length; k++){ //does the rows
+		this._board[j][k] = new Tile (_words[j * k + 4]);
 	    }	
 	}
 	randomize();
 	for(int x=2; x< 4; x++){ //does the second two rows
-	    for(int y=0; y < a[x].length; y++){ //does the rows
-		a[x][y] = _words[x * y + 4];
+	    for(int y=0; y < this._board[x].length; y++){ //does the rows
+		this._board[x][y] = new Tile (_words[x * y + 4]);
 	    }	
 	}
     }
-
-    //DO NOT MODIFY main()
-    public static void main(String[] args){
-	Concentration game = new Concentration();
-	game.play();
+    
+    public void play() {
+    	
     }
+		
+		//DO NOT MODIFY main()
+		public static void main(String[] args){
+				Concentration game = new Concentration();
+				game.play();
+		}
 
 }//end class Concentration
 
